@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_base">
         <activity
+            android:name=".ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddUsers_act"
+            android:exported="false" />
+        <activity
             android:name=".home_act"
             android:exported="false" />
         <activity
