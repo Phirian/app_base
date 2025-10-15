@@ -1,24 +1,63 @@
 package com.example.app_base;
 
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ViewFlipper;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
+
 
 public class home_act extends AppCompatActivity {
+
+    Button btnAgregar, btnVer, btnEstadisticas;
+    ViewFlipper flipper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        flipper = findViewById(R.id.editflip);
+
+        int[] banners = {
+                R.drawable.banner1,
+                R.drawable.banner2,
+                R.drawable.banner3
+        };
+
+        for (int banner : banners) {
+            ShapeableImageView img = new ShapeableImageView(this);
+            img.setImageResource(banner);
+            img.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            img.setPadding(8, 8, 8, 8);
+            img.setLayoutParams(new ViewFlipper.LayoutParams(
+                    ViewFlipper.LayoutParams.MATCH_PARENT,
+                    ViewFlipper.LayoutParams.MATCH_PARENT
+            ));
+
+            ShapeAppearanceModel shapeModel = new ShapeAppearanceModel()
+                    .toBuilder()
+                    .setAllCorners(CornerFamily.ROUNDED, 32f)
+                    .build();
+            img.setShapeAppearanceModel(shapeModel);
+
+            flipper.addView(img);
+        }
+
+
+        flipper.setFlipInterval(5000);
+        flipper.setAutoStart(true);
+
+
+        btnAgregar = findViewById(R.id.btnAgregar);
+        btnVer = findViewById(R.id.btnVer);
+        btnEstadisticas = findViewById(R.id.btnEstadisticas);
+
+
     }
 }
