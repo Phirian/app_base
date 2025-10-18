@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (inputUser.equals(admin.getUsername()) && inputPass.equals(admin.getPassword())) {
             Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, home_act.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         }
         else{

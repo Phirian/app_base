@@ -11,9 +11,9 @@ import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.ShapeAppearanceModel;
 
 
-public class home_act extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    Button btnAgregar, btnVer, btnEstadisticas;
+    Button agregar, ver, estadisticas;
     ViewFlipper flipper;
 
 
@@ -49,15 +49,16 @@ public class home_act extends AppCompatActivity {
             flipper.addView(img);
         }
 
-
         flipper.setFlipInterval(5000);
         flipper.setAutoStart(true);
 
+        agregar = findViewById(R.id.btnAgregar);
+        ver = findViewById(R.id.btnVer);
+        estadisticas = findViewById(R.id.btnEstadisticas);
 
-        btnAgregar = findViewById(R.id.btnAgregar);
-        btnVer = findViewById(R.id.btnVer);
-        btnEstadisticas = findViewById(R.id.btnEstadisticas);
+        agregar.setOnClickListener(v -> startActivity(new Intent(this, FormularioActivity.class)));
+        ver.setOnClickListener(v -> startActivity(new Intent(this, VerTareasActivity.class)));
+        estadisticas.setOnClickListener(v -> startActivity(new Intent(this, EstadisticasActivity.class)));
 
-
-    }
+        }
 }
